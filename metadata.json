@@ -1,0 +1,5 @@
+{
+  "name": "HealthTest AI: Automated Test Case Generation",
+  "description": "An AI-powered application to automatically generate, manage, and integrate software test cases from various requirement inputs like user stories and API schemas. It leverages AI to suggest edge cases, perform gap analysis, and generate code snippets, streamlining the QA process.",
+  "requestFramePermissions": []
+}

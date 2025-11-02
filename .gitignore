@@ -25,3 +25,7 @@ dist-ssr
 .env
 .env.local
 .venv
+.firebaserc
+package-lock.json
+hosting.*
+firebase-debug.log

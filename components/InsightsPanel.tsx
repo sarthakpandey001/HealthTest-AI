@@ -24,7 +24,11 @@ export const InsightsPanel: React.FC<InsightsPanelProps> = ({ summary, gaps, tes
         <h2 className="text-lg font-bold text-slate-900 mb-4">Insights & Integration</h2>
         <EdgeCasesSummary summary={summary} />
         <FeatureGapAnalysis gaps={gaps} />
-        <ExportIntegrate onDownloadClick={onDownloadClick} hasTestCases={testCases.length > 0} />
+        <ExportIntegrate 
+          onDownloadClick={onDownloadClick} 
+          hasTestCases={testCases.length > 0}
+          testCases={testCases} 
+        />
         <TestCaseHistory />
       </div>
     </div>

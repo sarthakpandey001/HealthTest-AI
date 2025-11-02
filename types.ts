@@ -5,9 +5,10 @@ export enum Priority {
 }
 
 export enum Status {
-  Draft = 'Draft',
-  Ready = 'Ready',
-  InProgress = 'In Progress',
+  Pass = 'Pass',
+  Fail = 'Fail',
+  Blocked = 'Blocked',
+  Draft = 'Draft'
 }
 
 export enum TestCaseType {
@@ -26,6 +27,7 @@ export interface TestCase {
   preconditions: string[];
   steps: string[];
   expectedResults: string[];
+  traceability: string[];  // Changed to required string array
 }
 
 export interface User {

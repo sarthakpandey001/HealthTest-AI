@@ -9,7 +9,7 @@ interface TestCaseListProps {
 }
 
 export const TestCaseList: React.FC<TestCaseListProps> = ({ testCases, onEdit }) => {
-  const headers = ['ID', 'Title', 'Priority', 'Status', 'Actions'];
+  const headers = ['ID', 'Title', 'Priority', 'Status', 'Traceability', 'Actions'];
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm text-left text-slate-600">

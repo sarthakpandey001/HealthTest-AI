@@ -10,6 +10,7 @@ import { Login } from './components/Login';
 import { TestCase, TestCaseType, User } from './types';
 import { generateTestCases, getClarificationQuestions } from './services/geminiService';
 import { sampleRequirements, sampleOpenAPISchema } from './data/sampleData';
+import CorpusManager from './components/addsource';
 
 const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -120,7 +121,8 @@ const App: React.FC = () => {
       <main className="p-4 lg:p-8">
         <h1 className="text-3xl font-bold text-slate-900 mb-6">Automated Test Case Generation</h1>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 flex flex-col gap-4">
+            <CorpusManager />
             <InputPanel 
               requirementsInput={requirementsInput}
               setRequirementsInput={setRequirementsInput}

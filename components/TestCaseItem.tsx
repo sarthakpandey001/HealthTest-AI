@@ -22,9 +22,10 @@ const priorityColorClasses: Record<Priority, string> = {
 };
 
 const statusColorClasses: Record<Status, string> = {
+    [Status.Pass]: 'bg-green-100 text-green-800',
+    [Status.Fail]: 'bg-red-100 text-red-800',
+    [Status.Blocked]: 'bg-yellow-100 text-yellow-800',
     [Status.Draft]: 'bg-slate-100 text-slate-800',
-    [Status.Ready]: 'bg-green-100 text-green-800',
-    [Status.InProgress]: 'bg-yellow-100 text-yellow-800',
 };
 
 
@@ -51,6 +52,13 @@ export const TestCaseItem: React.FC<TestCaseItemProps> = ({ testCase, onEdit }) 
         <span className={`px-2 py-1 text-xs font-medium rounded-full ${statusColorClasses[testCase.status]}`}>
             {testCase.status}
         </span>
+      </td>
+      <td className="px-6 py-4">
+        {testCase.traceability && testCase.traceability.length > 0 ? (
+          <span className="text-xs text-slate-700">{testCase.traceability.join(', ')}</span>
+        ) : (
+          <span className="text-xs text-slate-400 italic">N/A</span>
+        )}
       </td>
       <td className="px-6 py-4">
         <div className="flex items-center space-x-2">

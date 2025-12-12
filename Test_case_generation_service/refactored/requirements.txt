@@ -1,0 +1,14 @@
+google-cloud-aiplatform
+beautifulsoup4
+lxml
+selenium-stealth
+webdriver-manager
+flask 
+flask-cors
+google-cloud-firestore 
+google-cloud-storage 
+requests 
+gunicorn
+typing_extensions >= 3.7.3.4
+GitDB
+GitPython

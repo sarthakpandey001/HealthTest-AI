@@ -1,0 +1,12 @@
+google-cloud-aiplatform
+beautifulsoup4
+lxml
+# pytest-playwright
+# $ playwright install
+selenium-stealth
+flask 
+flask-cors
+google-cloud-firestore 
+google-cloud-storage 
+requests 
+vertexai

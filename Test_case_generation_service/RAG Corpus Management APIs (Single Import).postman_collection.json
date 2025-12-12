@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "8e5f05ad-07a9-4348-b70b-0530e63a91ec",
+		"name": "RAG Corpus Management APIs (Single Import)",
+		"description": "A single collection file to test the Flask APIs for corpus management. Base URL and Corpus Name are defined as variables within the collection.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26030636"
+	},
+	"item": [
+		{
+			"name": "1. Create New Corpus (POST) - ASYNC",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"corpus_name\": \"DPDP\",\n    \"link\": \"https://www.dpdpa.in/dpdpa_rules_2025/dpdpa_draft_rules_english_.pdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/corpus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus"
+					]
+				},
+				"description": "Starts the long-running creation process. Returns 202 Accepted immediately."
+			},
+			"response": []
+		},
+		{
+			"name": "RAG (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requirement\": \"a medical device to suggest medicines according to patient health record\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/rag",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"rag"
+					]
+				},
+				"description": "Starts the long-running creation process. Returns 202 Accepted immediately."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Corpus Status (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/corpus/GDPR",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus",
+						"GDPR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. List All Corpuses (GET /corpus)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/corpus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Update Existing Corpus (PUT) - ASYNC",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/corpus/GDPR",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus",
+						"GDPR"
+					]
+				},
+				"description": "Starts the long-running update check. Returns 202 Accepted immediately."
+			},
+			"response": []
+		},
+		{
+			"name": "5. Delete Corpus (DELETE) - SYNCHRONOUS",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/corpus/DPDP",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus",
+						"DPDP"
+					]
+				},
+				"description": "Deletes the corpus, GCS files, and RAG corpus. Returns 200 OK."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		},
+		{
+			"key": "corpusName",
+			"value": "Test_Corpus_42",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,28 @@
+scraped/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+
+# Virtual environment
+venv/
+.env/
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# Sensitive information
+.env
+config.ini

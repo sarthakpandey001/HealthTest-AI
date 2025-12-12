@@ -1,0 +1,34 @@
+steps:
+# Step 1: Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build
+  args:
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/tc-gen-ai:$COMMIT_SHA'
+    - '.'
+  # Cloud Build automatically detects the Dockerfile, or you can specify it: -f ./Dockerfile
+
+# Step 2: Push the container image to Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  id: Push
+  args:
+    - 'push'
+    - 'gcr.io/$PROJECT_ID/tc-gen-ai:$COMMIT_SHA'
+
+# Step 3: Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  id: Deploy
+  args:
+    - 'gcloud'
+    - 'run'
+    - 'deploy'
+    - 'tc-gen-ai'
+    - '--image'
+    - 'gcr.io/$PROJECT_ID/tc-gen-ai:$COMMIT_SHA'
+    - '--region'
+    - 'us-east4'
+    - '--platform'
+    - 'managed'
+    # Add other configuration flags as needed (e.g., --allow-unauthenticated)
+  # Ensure the Cloud Build service account has the 'Cloud Run Admin' role.

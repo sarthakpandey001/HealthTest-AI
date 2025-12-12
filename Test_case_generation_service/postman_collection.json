@@ -1,0 +1,145 @@
+
+{
+	"info": {
+		"_postman_id": "7320c028-00a4-4a4f-a454-e4c1979b0d2d",
+		"name": "RAG Corpus Management APIs (Single Import)",
+		"description": "A single collection file to test the Flask APIs for corpus management. Base URL and Corpus Name are defined as variables within the collection.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:5000",
+			"type": "string"
+		},
+		{
+			"key": "corpusName",
+			"value": "Test_Corpus_42",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Create New Corpus (POST) - ASYNC",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"corpus_name\": \"{{corpusName}}\",\n    \"link\": \"https://gdpr-info.eu/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/corpus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus"
+					]
+				},
+				"description": "Starts the long-running creation process. Returns 202 Accepted immediately."
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Corpus Status (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/corpus/{{corpusName}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus",
+						"{{corpusName}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. List All Corpuses (GET /corpus)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/corpus",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Update Existing Corpus (PUT) - ASYNC",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/corpus/{{corpusName}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus",
+						"{{corpusName}}"
+					]
+				},
+				"description": "Starts the long-running update check. Returns 202 Accepted immediately."
+			},
+			"response": []
+		},
+		{
+			"name": "5. Delete Corpus (DELETE) - SYNCHRONOUS",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/corpus/{{corpusName}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"corpus",
+						"{{corpusName}}"
+					]
+				},
+				"description": "Deletes the corpus, GCS files, and RAG corpus. Returns 200 OK."
+			},
+			"response": []
+		}
+	]
+}
